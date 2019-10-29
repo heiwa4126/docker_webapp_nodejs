@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -p 18080:8080 -d heiwa4126/webapp_nodejs

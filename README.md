@@ -14,10 +14,10 @@ Node 10.xとexpressjs。
 
 ``` bash
 docker pull heiwa4126/webapp_nodejs
-docker run -p 8080:8080 -d heiwa4126/webapp_nodejs
+docker run --init -p 8080:8080 -d heiwa4126/webapp_nodejs
 curl http://localhost:8080
 ```
-で実行。
+のように実行。
 
 # 開発
 

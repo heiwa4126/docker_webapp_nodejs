@@ -1,2 +1,4 @@
 #!/bin/sh
-docker run --init -p 18080:8080 --log-driver=syslog -d heiwa4126/webapp_nodejs
+CID=./container_id.tmp
+docker run --init -p 18080:8080 --log-driver=syslog -d heiwa4126/webapp_nodejs > $CID
+cat "$CID"

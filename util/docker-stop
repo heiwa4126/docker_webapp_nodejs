@@ -1,0 +1,6 @@
+#!/bin/sh -x
+CIDFILE="./container_id.tmp"
+CID=$(cat "$CIDFILE")
+docker stop "$CID"
+docker rm "$CID"
+rm "$CIDFILE"

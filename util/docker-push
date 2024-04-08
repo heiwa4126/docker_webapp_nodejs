@@ -1,2 +1,4 @@
 #!/bin/sh
-docker push heiwa4126/webapp_nodejs
+VERSION=$(node -p "require('./package.json').version")
+docker push heiwa4126/webapp_nodejs:$VERSION
+docker push heiwa4126/webapp_nodejs:latest

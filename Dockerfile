@@ -13,7 +13,7 @@ RUN npm install
 # RUN npm install --only=production
 
 # アプリケーションのソースをバンドルする
-COPY . .
+COPY src/. .
 
 
 EXPOSE 8080

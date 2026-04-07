@@ -1,20 +1,22 @@
-FROM node:20-alpine
+# see https://pnpm.io/docker
 
-# アプリケーションディレクトリを作成する
-WORKDIR /usr/src/app
+FROM node:24-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+COPY . /app
+WORKDIR /app
 
-# アプリケーションの依存関係をインストールする
-# ワイルドカードを使用して、package.json と package-lock.json の両方が確実にコピーされるようにします。
-# 可能であれば (npm@5+)
-COPY package*.json ./
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
-RUN npm install
-# 本番用にコードを作成している場合
-# RUN npm install --only=production
+# FROM base AS build
+# RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+# RUN pnpm run build
 
-# アプリケーションのソースをバンドルする
-COPY src/. .
-
+FROM base
+COPY --from=prod-deps /app/node_modules /app/node_modules
+# COPY --from=build /app/dist /app/dist
 
 EXPOSE 8080
 CMD [ "node", "server.js" ]

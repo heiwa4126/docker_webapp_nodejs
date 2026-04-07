@@ -21,24 +21,24 @@ curl http://localhost:8080
 ## 開発
 
 ```bash
-npm start
+pnpm start
 ```
 
 で Node.js レベルで実行
-`npm stop`で停止。`npm restart`で再起動。
+`pnpm stop`で停止。`pnpm restart`で再起動。
 
 ## Docker イメージ
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 でイメージ作成
 
 ```bash
-npm run docker
+pnpm run docker
 # またはWSLの場合
-npm run docker:wsl
+pnpm run docker:wsl
 ```
 
 で起動。テストは
@@ -49,10 +49,10 @@ curl -i http://127.0.0.1:18080
 
 のように。
 
-`npm run docker:wsl` の場合は `npm run docker:log` で log が表示できます。
+`pnpm run docker:wsl` の場合は `pnpm run docker:log` で log が表示できます。
 
 ```bash
-npm run docker:stop
+pnpm run docker:stop
 ```
 
 で終了。

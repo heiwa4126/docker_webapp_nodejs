@@ -1,27 +1,31 @@
 {
-  "name": "docker_webapp_nodejs",
-  "version": "1.1.0",
-  "description": "A simple expresjs exmaple with Docker",
-  "main": "src/server.js",
-  "scripts": {
-    "start": "bash -c 'node src/server.js &'",
-    "curl": "bash -c 'curl -i http://localhost:8080/'",
-    "stop": "bash -c 'kill $(lsof -t -i:8080)'",
-    "build": "bash util/docker-build",
-    "docker": "bash util/docker-run",
-    "docker:wsl": "bash util/docker-run-wsl",
-    "docker:log": "bash -c \"docker logs $(cat container_id.tmp) --follow &\"",
-    "docker:stop": "bash util/docker-stop",
-    "docker:push": "bash util/docker-push"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heiwa4126/docker_webapp_nodejs.git"
-  },
-  "author": "heiwa4126@gmail.com",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.19.2",
-    "morgan": "^1.10.0"
-  }
+	"name": "docker_webapp_nodejs",
+	"version": "1.1.0",
+	"description": "A simple expresjs exmaple with Docker",
+	"license": "ISC",
+	"author": "heiwa4126@gmail.com",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/heiwa4126/docker_webapp_nodejs.git"
+	},
+	"main": "src/server.js",
+	"scripts": {
+		"start": "bash -c 'node src/server.js &'",
+		"curl": "bash -c 'curl -i http://localhost:8080/'",
+		"stop": "bash -c 'kill $(lsof -t -i:8080)'",
+		"build": "bash util/docker-build",
+		"docker": "bash util/docker-run",
+		"docker:wsl": "bash util/docker-run-wsl",
+		"docker:log": "bash -c \"docker logs $(cat container_id.tmp) --follow &\"",
+		"docker:stop": "bash util/docker-stop",
+		"docker:push": "bash util/docker-push",
+		"preinstall": "pnpm audit",
+		"format": "oxfmt",
+		"lint": "oxlint",
+		"check": "oxfmt && oxlint --fix"
+	},
+	"dependencies": {
+		"express": "^4.22.1",
+		"morgan": "^1.10.1"
+	}
 }

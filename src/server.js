@@ -13,8 +13,8 @@ const app = express();
 app.use(morgan("combined"));
 
 app.get("/", (req, res) => {
-  res.contentType("text/plain");
-  res.send("Hello World! \n" + new Date().toISOString() + "\n");
+	res.contentType("text/plain");
+	res.send("Hello World! \n" + new Date().toISOString() + "\n");
 });
 
 app.listen(PORT, HOST);
